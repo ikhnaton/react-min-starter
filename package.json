@@ -1,0 +1,28 @@
+{
+  "name": "react-min-starter",
+  "version": "0.0.1",
+  "description": "Bare bones app to start working with React",
+  "main": "server/server.js",
+  "scripts": {
+    "prestart": "./node_modules/.bin/webpack --config webpack.prod.config.js",
+    "start": "node .",
+    "dev": "./node_modules/.bin/concurrently --names \"nodemon,webpack\" -c \"blue,green\" \"./node_modules/.bin/nodemon --ignore www -e js,jsx .\" \"./node_modules/.bin/webpack\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "node . | ./node_modules/.bin/webpack"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^3.1.0"
+  }
+}
+
