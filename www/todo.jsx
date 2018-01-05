@@ -28,6 +28,12 @@ class Todo extends React.Component
 		});
 	}
 
+	removeItem(index)
+	{
+		let newList = [...this.state.list.slice(0,index), ...this.state.list.slice(index+1)];
+		this.setState({ list: newList });
+	}
+
 	render()
 	{
 		return (
@@ -35,7 +41,7 @@ class Todo extends React.Component
 				<input type="text" value={this.state.newItem} onChange={this.handleChange.bind(this)} />
 				<button onClick={this.addItem}>Add Item</button>
 				<br/>
-				<SimpleList list={this.state.list} />
+				<SimpleList list={this.state.list} delete={this.removeItem.bind(this)} />
 			</div>
 		);
 	}
