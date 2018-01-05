@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Todo from './todo.jsx';
 
 class App extends React.Component
 {
@@ -12,7 +13,9 @@ class App extends React.Component
 	{
 		return (
 			<div>
-				Hello World
+				Hello World<br/>
+				<br/>
+				<Todo />
 			</div>
 		);
 	}
