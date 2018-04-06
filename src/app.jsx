@@ -13,7 +13,7 @@ class App extends React.Component
 	{
 		return (
 			<div>
-				Hello World<br/>
+				Super simple todo list with Cloudant DB<br/>
 				<br/>
 				<Todo />
 			</div>

@@ -1,30 +1,23 @@
-const webpack = require('webpack');
-const path = require('path');
-
-module.exports = {
-	entry: path.join(__dirname, '/www/app.jsx'),
-	output: {
-		filename: 'bundle.js',
-		path: path.join(__dirname, '/www')
-	},
+const devConfig = {
+	devtool: 'source-map',
+	watch: true,
 	stats: {
 		colors: true
-	},
-	devtool: 'source-map',
-	module: {
-		loaders: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: "babel-loader"
-			},
-			{
-				test: /\.jsx$/,
-				exclude: /node_modules/,
-				loader: "babel-loader"
-			}
-  		]
-	},
-	watch: true
+	}
+}
 
-};
+const prodConfig = require('./webpack.prod.config');
+
+const clientConfig = Object.assign({}, prodConfig[0], devConfig, {
+	plugins: [
+		prodConfig.pluginConfigs.ExtractTextPlugin,
+		prodConfig.pluginConfigs.CopyWebpackPlugin
+	]
+});
+const serverConfig = Object.assign({}, prodConfig[1], devConfig, {
+	plugins: [
+		prodConfig.pluginConfigs.ExtractTextPlugin
+	]
+});
+
+module.exports = [ clientConfig, serverConfig ]

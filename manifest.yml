@@ -1,0 +1,5 @@
+---
+applications:
+ - name: todo
+   instances: 1
+   memory: 256M
