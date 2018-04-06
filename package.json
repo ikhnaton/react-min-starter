@@ -36,5 +36,8 @@
       "env",
       "react"
     ]
+  },
+  "engines": {
+    "node": "=9.6.1"
   }
 }
