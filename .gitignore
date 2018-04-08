@@ -7,3 +7,4 @@
 /www/bundle.js.map
 /server/vcap.local.json
 /package-lock.json
+/dist/
