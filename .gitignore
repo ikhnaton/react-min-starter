@@ -8,3 +8,4 @@
 /server/vcap.local.json
 /package-lock.json
 /dist/
+/coverage/

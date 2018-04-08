@@ -7,16 +7,13 @@
     "prestart": "./node_modules/.bin/webpack --config webpack.prod.config.js",
     "start": "node .",
     "dev": "./node_modules/.bin/concurrently --names \"nodemon,webpack\" -c \"blue,green\" \"./node_modules/.bin/nodemon --ignore www -e js,jsx .\" \"./node_modules/.bin/webpack\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "webpack": "node . | ./node_modules/.bin/webpack"
   },
   "dependencies": {
     "@cloudant/cloudant": "^2.1.0",
     "axios": "^0.18.0",
-    "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.0",
     "copy-webpack-plugin": "^4.5.1",
@@ -26,16 +23,33 @@
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "nodemon": "^1.11.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "style-loader": "^0.20.3",
     "webpack": "^3.1.0"
   },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/preset-react": "^7.0.0-beta.44",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.4.3",
+    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.3",
+    "jest-enzyme": "^6.0.0",
+    "react-test-renderer": "^16.3.1"
+  },
   "babel": {
     "presets": [
-      "env",
-      "react"
+      "@babel/env",
+      "@babel/react"
     ]
+  },
+  "jest": {
+    "globalSetup": "./src/jest.setup.js",
+	"collectCoverage": true
   },
   "engines": {
     "node": "=9.6.1"
