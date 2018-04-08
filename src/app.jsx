@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Todo from './todo.jsx';
+import './app.less';
 
 class App extends React.Component
 {
