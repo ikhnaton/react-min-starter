@@ -1,6 +1,4 @@
 import React from 'react';
-//import sinon from 'sinon';
-import { expect } from 'chai';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import SimpleList from './simpleList.jsx';
@@ -16,9 +14,9 @@ const list = [
 describe('<SimpleList />', () => {
   it('allows us to set props', () => {
     const wrapper = mount(<SimpleList list={list} />);
-    expect(wrapper.props().list[1].task).to.equal('write your name.');
+    expect(wrapper.props().list[1].task).toBe('write your name.');
     wrapper.setProps({ list: [{task: 'go to sleep.'}] });
-    expect(wrapper.props().list[0].task).to.equal('go to sleep.');
+    expect(wrapper.props().list[0].task).toBe('go to sleep.');
   });
 
   it('simulates click events', () => {
@@ -29,7 +27,7 @@ describe('<SimpleList />', () => {
     const wrapper = mount(<SimpleList list={list} delete={deleteTask} />);
     let domElements = wrapper.find('li');
 	domElements.at(1).simulate('click');
-	  expect(delVal).to.have.property('task', 'write your name.');
+	  expect(delVal).toHaveProperty('task', 'write your name.');
   });
 
 });

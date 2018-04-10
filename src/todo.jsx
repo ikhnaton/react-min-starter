@@ -9,7 +9,8 @@ class Todo extends React.Component
 		super(props);
 		this.state = {
 			list: [],
-			newItem: ""
+			newItem: "",
+			error:  null
 		};
 		this.addItem = this.addItem.bind(this);
 		this.getItems();
@@ -23,11 +24,14 @@ class Todo extends React.Component
 		})
 		.then(result => {
 			this.setState({
-				list: result.data
+				list: result.data,
+				error: null
 			});
 		})
 		.catch(err => {
-			console.log(err);
+			this.setState({
+				error: err
+			});
 		})
 	}
 
@@ -56,7 +60,9 @@ class Todo extends React.Component
 			this.getItems();
 		})
 		.catch(err => {
-			console.log(err);
+			this.setState({
+				error: err
+			});
 		});
 
 	}
@@ -71,7 +77,9 @@ class Todo extends React.Component
 			this.getItems();
 		})
 		.catch(err => {
-			console.log(err);
+			this.setState({
+				error: err
+			});
 		})
 //		let newList = [...this.state.list.slice(0,index), ...this.state.list.slice(index+1)];
 //		this.setState({ list: newList });
@@ -85,6 +93,9 @@ class Todo extends React.Component
 				<button onClick={this.addItem}>Add Item</button>
 				<br/>
 				<SimpleList list={this.state.list} delete={this.removeItem.bind(this)} />
+				{
+					(this.state.error != null) ?<h2>{this.state.error}</h2>:""
+				}
 			</div>
 		);
 	}
